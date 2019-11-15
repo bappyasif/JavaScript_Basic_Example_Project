@@ -1,5 +1,46 @@
 // Example Project
 
+const createdForm = document.querySelector("#my-form");
+
+const nameInput = document.querySelector("#name");
+
+const emailInput = document.querySelector("#email");
+
+const msgField = document.querySelector(".msg");
+
+const usersList = document.querySelector("#users");
+
+createdForm.addEventListener("submit", onSubmit);
+
+function onSubmit(eventListener) {
+    eventListener.preventDefault();
+
+    //console.log(nameInput.value);
+    if(nameInput.value == "" || emailInput.value == "") {
+        //alert("Empty Sting");
+        msgField.classList.add("error");
+        msgField.innerHTML = "Please Enter All Required Fields";
+
+        setTimeout(() => msgField.remove(), 3000);
+
+    } else {
+        console.log("Successfull Entry");
+
+        const listItem = document.createElement("li");
+        listItem.appendChild(document.createTextNode(`
+        ${nameInput.value} : ${emailInput.value}`));
+
+        usersList.appendChild(listItem);
+
+        // Clearing Fields
+        nameInput.value="";
+        emailInput.value="";
+    }
+}
+
+
+/*
+//Working With HTML AND JS
 const ulItems = document.querySelector(".items");
 
 //ulItems.remove();
@@ -21,9 +62,22 @@ btn.addEventListener("click", (event) => {
     //console.log(event.target.className);
     //console.log(event.target.id);
     document.querySelector("#my-form").style.background = "#ccc";
+    document.querySelector("body").classList.add("bg-dark");
+    document.querySelector(".items").lastElementChild.innerHTML="<h1>'Supp??!!</h1>";
 });
 
-console.log(window);
+
+ btn.addEventListener("mouseover", (event) => {
+    event.preventDefault();
+    //console.log("Button Clicked!!");
+    //console.log(event.target.className);
+    //console.log(event.target.id);
+    document.querySelector("#my-form").style.background = "#ccc";
+    document.querySelector("body").classList.add("bg-dark");
+    document.querySelector(".items").lastElementChild.innerHTML="<h1>'Supp??!!</h1>";
+}); 
+
+//console.log(window);
 
 //alert(2);
 
@@ -44,8 +98,6 @@ console.log(document.getElementsByTagName("li"));
 const items = document.querySelectorAll(".item");
 items.forEach((itemElement) => console.log(itemElement));
 
-
-/*
 
 // Crash Course On JavaScript
 
